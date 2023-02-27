@@ -4,20 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "supportedInsurer")
-public class Insurer {
+public class QuotationDTO {
     @Id
-    private String id;
-
-    private String name;
-    private String premium;
+    private String requestId;
+    private List<InsurerDTO> supportedInsurers;
 }
-
-
-
-
