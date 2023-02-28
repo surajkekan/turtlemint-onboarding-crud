@@ -21,8 +21,7 @@ public class InsurerService {
         insurerRepository.save(insurer);
         return insurer;
     }
-
     public Optional<List<InsurerDTO>> getSupportedInsurers(String vertical,String make,String model){
-        insurerRepository
+        return insurerRepository.findAllByVerticalAndMakeAndModel(vertical,make,model);
     }
 }

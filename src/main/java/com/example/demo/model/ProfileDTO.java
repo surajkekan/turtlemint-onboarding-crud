@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "requests")
+@Document(collection = "Requests")
 public class ProfileDTO {
     @Id
     private String requestId;

@@ -4,6 +4,7 @@ import com.example.demo.model.InsurerDTO;
 import com.example.demo.model.ProfileDTO;
 import com.example.demo.model.QuotationDTO;
 import com.example.demo.repository.InsurerRepository;
+import com.example.demo.service.InsurerService;
 import com.example.demo.service.ProfileService;
 import com.example.demo.service.QuotationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class QuotationController {
     @Autowired
     ProfileService profileService;
     @Autowired
-    InsurerRepository insurerRepository;
+    InsurerService insurerService;
     @RequestMapping(value = "/getquotation", params = "requestId")
     public ResponseEntity<?> getQuotation(@RequestParam String requestId) {
         try{
@@ -39,8 +40,10 @@ public class QuotationController {
             String model=profile.get().getModel();
             String make=profile.get().getMake();
             String vertical=profile.get().getVertical();
-            Optional<List<InsurerDTO>> supportedInsurers=
-            quote.
+            Optional<List<InsurerDTO>> supportedInsurers=insurerService.getSupportedInsurers(vertical,make,model);
+            if (supportedInsurers.isPresent()){
+                quote.setSupportedInsurers(supportedInsurers.get());
+            }
             return new ResponseEntity<>(quote, HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.I_AM_A_TEAPOT);

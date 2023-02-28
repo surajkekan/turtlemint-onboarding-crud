@@ -25,6 +25,5 @@ public class InsurerController {
         }catch ( Exception e ){
             return new ResponseEntity<>(e.getLocalizedMessage(),HttpStatus.I_AM_A_TEAPOT);
         }
-
     }
 }

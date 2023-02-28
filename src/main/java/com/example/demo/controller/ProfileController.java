@@ -37,7 +37,7 @@ public class ProfileController {
                 }};
                 return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>(profile, HttpStatus.OK);
+            return new ResponseEntity<>(profile.get(), HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.I_AM_A_TEAPOT);
         }
