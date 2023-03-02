@@ -74,4 +74,5 @@ public class ProfileController {
             return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.I_AM_A_TEAPOT);
         }
     }
+
 }
