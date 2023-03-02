@@ -1,2 +1,10 @@
-package com.example.demo.repository;public interface QueueRepository {
+package com.example.demo.repository;
+
+import com.example.demo.entity.QueueEntity;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface QueueRepository extends MongoRepository<QueueEntity,String> {
+
 }
